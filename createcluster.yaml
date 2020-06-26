@@ -1,0 +1,18 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eksworkshop-eksctl
+  region: us-west-2
+
+managedNodeGroups:
+- name: nodegroup
+  desiredCapacity: 2
+  instanceType: t2.medium
+  minSize: 1
+  maxSize: 3
+  iam:
+    withAddonPolicies:
+      albIngress: true
+secretsEncryption:
+  keyARN: arn:aws:kms:us-west-2:998501917864:key/4c9ce7ed-c910-44fa-bb3a-3a85d1dfeb0c
